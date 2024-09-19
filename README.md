@@ -42,7 +42,7 @@ There are two Python scripts included in the project:
 
 ### Create a manifest file from the source account
 
-***TODO: Support ```--profile``` command line argument and add explanation about how to use Cloudshell as an alternative***
+***TODO: Support ```--profile``` command line argument***
 
 When you create an Amazon Connect instance, it comes with default contact flows, queues, prompts and other resources.  The identifiers of those resources are unique per instance and are referenced in the contact flows when exported from Connect.
 
@@ -50,14 +50,13 @@ The ```create-contact-flow-template``` script needs to know how to map the ident
 
 The ```create-source-manifest-file``` script exports the identifiers from the *source* Connect instance to a _manifest_ file that ```create-contact-flow-template``` uses for its mappings.
 
-First create a ```config.json``` file in the root project directory.
+First create a ```source-manifest-config.json``` file in the root project directory.
 
 ```json
 {
-    "Output": {
-        "ConnectInstanceId": "2f1b6bff-73f7-4c20-965d-aa833d7eddfd",
-        "ManifestFileName":"source-manifest.json"
-    }
+    
+    "ConnectInstanceId": "2f1b6bff-73f7-4c20-965d-aa833d7eddfd",
+    "ManifestFileName":"source-manifest.json"
 }
 ```
 
@@ -76,6 +75,7 @@ export AWS_DEFAULT_REGION=<YOUR REGION>
 
 
 ```bash
+pip3 install -r requirements.txt #First time only
 python3 create-source-manifest-file.py
 ```
 
@@ -119,7 +119,6 @@ First add the following items to the config.json file.
 Then run the script:
 
 ```bash
-pip3 install -r requirements.txt #First time only
 python3 create-contact-flow-template.py
 ```
 

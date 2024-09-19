@@ -77,7 +77,7 @@ def export_contact_flow(name, resource_type):
                 }})
             print(f"Creating resource {resource_name}")
             # Some properties  that are returned by the API call should not be included in the output template
-            excluded_properties = ["Id", "Arn", "ResponseMetadata", "InstanceId", "Tags", "Description"]
+            excluded_properties = ["Id", "Arn", "ResponseMetadata", "InstanceId", "Tags", "Description", "Status"]
             keys_to_add = list(properties.keys() - set(excluded_properties))
             properties_to_add = list(map(lambda x: {x: properties[x]}, keys_to_add))
 
@@ -368,6 +368,8 @@ def replace_contact_flowids():
                 continue
             contact_flow_id = customer_queue.split("/")[-1]
             contact_flow_arn = customer_queue
+            print(f"contact_flow_id = {contact_flow_id}")
+            print(f"contact_flows[contact_flow_id] = {contact_flows}")
             new_arn = "${" + contact_flows[contact_flow_id] + ".ContactFlowArn}"
             print(f"Replaced a contact flow reference with {new_arn} in a UpdateContactEventHooks action")
 

@@ -14,7 +14,7 @@ Resources:
     Properties:
       FunctionName: cfn-associate-lambda-connect 
       Handler: index.handler
-      Runtime: nodejs12.x
+      Runtime: nodejs20.x
       CodeUri: ./custom-resources/create-connect-lambda-permission
       Description: 'custom cloudformation resource used to associate a Lambda with a Connect instance'
       MemorySize: 256
@@ -41,7 +41,7 @@ Resources:
     Properties:
       FunctionName: LexConnectPermissionCustomResource
       Handler: index.handler
-      Runtime: nodejs12.x
+      Runtime: nodejs20.x
       CodeUri: ./custom-resources/create-connect-lex-permission
       Description: 'custom cloudformation resource used to associate a Lex with a Connect instance'
       MemorySize: 256
